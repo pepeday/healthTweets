@@ -1,0 +1,13 @@
+/Air Quality.log
+/Covid Vaccinations Cy.log
+/Heat Index.log
+/__pycache__
+/envirolib.py
+/log.log
+/logger.py
+/testing.py
+/tools.py
+/tweetme.py
+/workspace.code-workspace
+/.gitingore
+/config.json
