@@ -1,10 +1,15 @@
 import requests
-
+import json
 class pushover:
-    def __init__(self,app:str) -> None:
-        self.token="a3984bqyabhrqo8be2ji49xoktz5ss"
-        self.userKey="u3fcgbb9pcj5dw8tmuzzs4s5a4hccm"
-        self.url="https://api.pushover.net/1/messages.json"
+    def __init__(self,app:str,config_file:str) -> None:
+        try:
+            with open(config_file) as configuration:
+                settings = json.load(configuration)
+                self.token =  settings["token"]
+                self.userKey = settings['userKey']
+                self.url= settings['url']
+        except:
+            raise Exception('The configuration file does not exist or is invalid.')
         self.app=app
 
     def send(self,message:str):

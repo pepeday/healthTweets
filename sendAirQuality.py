@@ -7,9 +7,9 @@ app_name="Air Quality"
 logging.basicConfig(format='%(levelname)s %(asctime)s: %(message)s', filename=f'{app_name}.log',level=logging.DEBUG)
 
 
-push=pushover('Air Quality')
+push=pushover('Air Quality',config_file='config_pushover.json')
 airQualityUpdater = airQuality()
-twitter = tweetme(config_file='config.json')
+twitter = tweetme(config_file='config_tweepy.json')
 try:
     data = airQualityUpdater.getData()
     pollutants = airQualityUpdater.checkPollutants(data)

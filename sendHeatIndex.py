@@ -4,11 +4,11 @@ from pushover import pushover
 import logging
 app_name="Heat Index"
 
-logging.basicConfig(format='%(levelname)s %(asctime)s: %(message)s', filename=f'{app_name}.log',level=logging.DEBUG)
+logging.basicConfig(format='%(levelname)s %(asctime)s: %(message)s', filename=f'{app_name}.log',level=logging.INFO)
 
-push=pushover("Heat Index")
+push=pushover("Heat Index",config_file='config_pushover.json')
 heat=heatIndex()
-twitter=tweetme(config_file='config.json')
+twitter=tweetme(config_file='config_tweepy.json')
 img='heat index explanatory.png'
 
 try:
@@ -21,8 +21,8 @@ try:
         push.send(text)
         logging.info(text)
     else:
-        push.send("No value was exceeding")
-        logging.warning('No value was exceeding')
+        push.send("No value was exceeding.")
+        logging.warning('No value was exceeding.')
         pass
 except Exception as e:
     push.send(f'''Heat index failed to send. Error:
